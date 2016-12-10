@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Edit
+		<%= person.USERNAME %>
+	</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+	function validate(){
+		var pass1 = document.getElementById("pass1").value;
+		var pass2 = document.getElementById("pass2").value;
+		if((!pass1 && pass2) || (pass1 && !pass2)){
+			//prazna forma
+			console.log("eno prazno geslo");
+			return false;
+		} else if(pass1 === pass2){
+			//gesli se ujemata
+			console.log("pravilno");
+			return true;
+		}
+		console.log("narobe");
+		return false;
+	}
+
+</script>
+
+<body>
+	<% include nav.ejs %>
+		<div style="padding:25px">
+			<h3 style="padding-bottom:10px">Edit <%= person.USERNAME %></h3>
+			<form action="/admin/edit/<%= person.USER_ID %>" method="POST" enctype="multipart/form-data" onsubmit="return validate()">
+
+				username: <input type="text" id="Upime" name="Upime" value="<%= person.USERNAME %>" required /> <br />
+				
+				type: <select id="Tip" name="Tip" required>
+						<% if(person.TIP == 'A'){ %>
+						<option value="A" selected="selected">Admin</option>
+						<option value="U">User</option>
+						<% } else {%>
+						<option value="A">Admin</option>
+						<option value="U" selected="selected">User</option>
+						<% } %>
+					</select> <br />
+					<h5>change password</h5>
+					<input type="text" id="pass1" name="pass1" /> <br />
+					<input type="text" id="pass2" name="pass2" /> <br />
+					<button type="submit" >Submit</button>
+			</form>
+		</div>
+
+
+
+</body>
+
+</html>

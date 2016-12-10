@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Edit <%= citizen.CITIZEN_NAME %></title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<body>
+		<% include nav.ejs %>
+		<div style="padding:25px">
+			<h3 style="padding-bottom:10px">Edit <%= citizen.CITIZEN_NAME %></h3>
+			<form method="POST" action="/list/edit/<%= citizen.CITIZEN_ID %>" enctype="multipart/form-data">
+				name: <input type="text" id="CitizenName" name="CitizenName" value="<%= citizen.CITIZEN_NAME %>" required/><br />
+				str: <input type="number" id="Str" name="Str"  value="<%= citizen.STR %>" required/><br />
+				dex: <input type="number" id="Dex" name="Dex"  value="<%= citizen.DEX %>" required/><br />
+				con: <input type="number" id="Con" name="Con"  value="<%= citizen.CON %>" required/><br />
+				char: <input type="number" id="Char" name="Char"  value="<%= citizen.CHR %>" required/><br />
+				intl: <input type="number" id="Intl" name="Intl"  value="<%= citizen.INTL %>" required/><br />
+				<button type="submit">Submit</button>
+			</form>
+		</div>
+	</body>
+</html>
