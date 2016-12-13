@@ -12,7 +12,7 @@
 	}	%>
 
 	<head>
-		<title></title>
+		<title>Record Overview</title>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	</head>
@@ -22,17 +22,18 @@
 	<body>
 		<% include nav.ejs %>
 
-		<div style="padding:25px">
-			<h3 style="padding-bottom:10px">Record overview</h3>
-			<% for(var i = 0; i < items.length; i++) { %>
-			<hr />
-			<div style="float:none">
-				<span><%= items[i].DATUM_VNOSA %> - <strong><%= items[i].CITIZEN_NAME %></strong> <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
-				<span style="float:right">Added by: <%= items[i].USERNAME %></span>
+			<div style="padding:25px">
+				<h3 style="padding-bottom:10px">Record overview</h3>
+				<% for(var i = 0; i < items.length; i++) { %>
+					<hr />
+					<div style="float:none">
+						<span><%= items[i].DATUM_VNOSA %> - <strong><%= items[i].CITIZEN_NAME %></strong> <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
+						<span style="float:right">Added by: <%= items[i].USERNAME %></span>
+					</div>
+
+					<% } %>
+
 			</div>
-
-			<% } %>
-
-		</div>
 	</body>
+
 </html>

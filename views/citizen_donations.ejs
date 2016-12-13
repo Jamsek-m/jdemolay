@@ -9,6 +9,7 @@
 			return 'nedefinirano';
 		}
 	}	%>
+
 	<head>
 		<title>Citizen contribution</title>
 		<meta charset="utf-8" />
@@ -19,20 +20,23 @@
 
 	<body>
 		<% include nav.ejs %>
-		<div style="padding:25px">
-			<% if(!items[0]){ %>
-				<p> No records found!</p>
-			<% } else { %>
-			<h3>Records of <%= items[0].CITIZEN_NAME %></h3>
-			<% for(var i = 0; i < items.length; i++) { %>
-				<hr />
-			<div style="float:none">
-				<span><%= items[i].DATUM_VNOSA %> - <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
-				<span style="float:right">Added by: <%= items[i].USERNAME %></span>
-			</div>
+			<div style="padding:25px">
+				<% if(!items[0]){ %>
+					<p> No records found!</p>
+					<% } else { %>
+						<h3>Records of
+							<%= items[0].CITIZEN_NAME %>
+						</h3>
+						<% for(var i = 0; i < items.length; i++) { %>
+							<hr />
+							<div style="float:none">
+								<span><%= items[i].DATUM_VNOSA %> - <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
+								<span style="float:right">Added by: <%= items[i].USERNAME %></span>
+							</div>
 
-			<% }} %>
-			<a href="/list"><span class="glyphicon glyphicon-chevron-left">Back</span></a>
-		</div>
+							<% }} %>
+								<a href="/list"><span class="glyphicon glyphicon-chevron-left" style="padding-top:15px">Back</span></a>
+			</div>
 	</body>
+
 </html>

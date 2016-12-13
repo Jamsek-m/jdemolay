@@ -47,10 +47,10 @@
 	tr:hover {
 		background-color: #eee;
 	}
+	
 	.toggle {
-		display : none;
+		display: none;
 	}
-
 </style>
 
 <script>
@@ -61,10 +61,14 @@
 			$(".toggle:visible").not("#insert").hide();
 			if(show){
 				show = false;
-				$("#showInsert").html("Dodaj citizena");
+				$("#showInsert").removeClass('btn-danger');
+				$("#showInsert").addClass('btn-default');
+				$("#showInsert").html("Add new citizen");
 			} else {
 				show = true;
-				$("#showInsert").html("Prekliči");
+				$("#showInsert").removeClass('btn-default');
+				$("#showInsert").addClass('btn-danger');
+				$("#showInsert").html("Cancel");
 			}
 		});
 	});
@@ -75,17 +79,35 @@
 		<div style="padding:25px">
 			<h3 style="padding-bottom:10px">Citizen list</h3>
 			<div id="new">
-				<button id="showInsert">Dodaj citizena</button>
+				<button id="showInsert" class="btn btn-default">Add new citizen</button>
 			</div>
 			<div id="insert" class="toggle">
-				<form action="/list/add" method="POST" enctype="multipart/form-data">
-					name: <input type="text" id="CitizenName" name="CitizenName"  required/><br />
-					str: <input type="number" id="Str" name="Str" /><br />
-					dex: <input type="number" id="Dex" name="Dex" /><br />
-					con: <input type="number" id="Con" name="Con" /><br />
-					char: <input type="number" id="Char" name="Char" /><br />
-					intl: <input type="number" id="Intl" name="Intl" /><br />
-					<button type="submit">Submit</button>
+				<form action="/list/add" method="POST" enctype="multipart/form-data" style="width: 350px; padding-bottom:15px">
+					<div class="form-group">
+						<label for="CitizenName">Citizen name:</label>
+						<input type="text" id="CitizenName" name="CitizenName" class="form-control" required/>
+					</div>
+					<div class="form-group">
+						<label for="Str">Strength:</label>
+						<input type="number" id="Str" name="Str" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Str">Dexterity:</label>
+						<input type="number" id="Dex" name="Dex" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Str">Constitution:</label>
+						<input type="number" id="Con" name="Con" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Str">Charisma:</label>
+						<input type="number" id="Char" name="Char" class="form-control" />
+					</div>
+					<div class="form-group">
+						<label for="Str">Intelligence:</label>
+						<input type="number" id="Intl" name="Intl" class="form-control" />
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
 				</form>
 			</div>
 			<table class="sortable">
@@ -120,7 +142,11 @@
 						<td>
 							<%= items[i].CHR %>
 						</td>
-						<td><a href="/donations/<%= items[i].CITIZEN_ID %>"><%= items[i].BALANCE %></a></td> 
+						<td>
+							<a href="/donations/<%= items[i].CITIZEN_ID %>">
+								<%= items[i].BALANCE %>
+							</a>
+						</td>
 					</tr>
 					<% } %>
 

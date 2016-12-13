@@ -23,6 +23,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="javascripts/sorttable.js"></script>
 
+
 	<style>
 		table.sortable thead {
 			background-color: #cdcdcd;
@@ -74,10 +75,14 @@
 			$(".toggle:visible").not("#insert").hide();
 			if(show){
 				show = false;
-				$("#showInsert").html("Dodaj user");
+				$("#showInsert").removeClass('btn-danger');
+				$("#showInsert").addClass('btn-default');
+				$("#showInsert").html("Add new user");
 			} else {
 				show = true;
-				$("#showInsert").html("Prekliči");
+				$("#showInsert").removeClass('btn-default');
+				$("#showInsert").addClass('btn-danger');
+				$("#showInsert").html("Cancel");
 			}
 		});
 	});
@@ -87,10 +92,13 @@
 	<body>
 		<% include nav.ejs %>
 			<div style="padding:25px">
+
 				<h3 style="padding-bottom:10px">Users</h3>
-				<button id="showInsert" class="btn btn-default">Add user</button>
+
+				<button id="showInsert" class="btn btn-default">Add new user</button>
+
 				<div id="insert" class="toggle">
-					<form action="/admin/new" method="POST" enctype="multipart/form-data">
+					<form action="/admin/new" method="POST" enctype="multipart/form-data" style="padding-bottom:15px; width:350px">
 						<div class="form-group">
 							<label for="Upime">Username</label>
 							<input type="text" class="form-control" id="Upime" name="Upime" required/> <br />
@@ -105,32 +113,38 @@
 							<option value="A">Admin</option>
 							<option value="U" selected="selected">User</option>
 						</select>
+						</div>
 
-							<button type="submit" class="btn btn-default">Submit</button>
+						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
-					</div>
-					<div id="data">
-						<table class="sortable">
-							<tr>
-								<th></th>
-								<th class="tablCol left">Username</th>
-								<th class="tablCol">Type</th>
-							</tr>
-							<% for(var i = 0; i < items.length; i++){ %>
-								<tr>
-									<td><a href="/admin/edit/<%= items[i].USER_ID %>"><span class="glyphicon glyphicon-pencil"></span></a></td>
-									<td class="left">
-										<%= items[i].USERNAME %>
-									</td>
-									<td>
-										<%= vrniTip(items[i].TIP) %>
-									</td>
-								</tr>
-								<% } %>
-
-						</table>
-					</div>
 				</div>
+
+				<div id="data">
+					<table class="sortable">
+						<tr>
+							<th></th>
+							<th class="tablCol left">Username</th>
+							<th class="tablCol">Type</th>
+						</tr>
+						<% for(var i = 0; i < items.length; i++){ %>
+							<tr>
+								<td>
+									<a href="/admin/edit/<%= items[i].USER_ID %>"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="/admin/delete/<%= items[i].USER_ID %>"><span class="glyphicon glyphicon-trash" onclick="return confirm('Are you sure you want to delete <%= items[i].USERNAME %>?');"></span></a>
+								</td>
+								<td class="left">
+									<%= items[i].USERNAME %>
+								</td>
+								<td>
+									<%= vrniTip(items[i].TIP) %>
+								</td>
+							</tr>
+							<% } %>
+
+					</table>
+				</div>
+
+			</div>
 	</body>
 
 </html>

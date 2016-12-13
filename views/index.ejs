@@ -9,6 +9,7 @@
 			return 'nedefinirano';
 		}
 	}	%>
+
 	<head>
 		<title>Jdemolay Serbian Administration</title>
 		<meta charset="utf-8" />
@@ -19,17 +20,19 @@
 
 	<body>
 		<% include nav.ejs %>
-		<div style="padding:25px">
-			<h2 style="padding-bottom:10px">Jdemolay Serbian Administration</h2>
-			<% for(var i = 0; i < items.length; i++){ %>
-			<hr />
-			<div style="float:none">
-				<span><%= items[i].DATUM_VNOSA %> - <strong><%= items[i].CITIZEN_NAME %></strong> <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
-				<span style="float:right">Added by: <%= items[i].USERNAME %></span>
-			</div>
-			
-		<% } %>
+			<div style="padding:25px">
+				<h2 style="padding-bottom:10px">Jdemolay Serbian Administration</h2>
+				<h3>Last 10 records:</h3>
+				<% for(var i = 0; i < items.length; i++){ %>
+					<hr />
+					<div style="float:none">
+						<span><%= items[i].DATUM_VNOSA %> - <strong><%= items[i].CITIZEN_NAME %></strong> <%= vrniTip(items[i].TIP) %> <strong><%= items[i].KOLICINA %> <%= items[i].NAZIV %></strong></span>
+						<span style="float:right">Added by: <%= items[i].USERNAME %></span>
+					</div>
 
-		</div>
+					<% } %>
+
+			</div>
 	</body>
+
 </html>
