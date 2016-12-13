@@ -51,7 +51,7 @@ $(document).ready(function(){
 					<input type="number" id="Intl" name="Intl" value="<%= citizen.INTL %>" class="form-control" />
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button> <button type="button" id="back_btn" class="btn btn-info">Cancel</button>
-				<a href="/list/delete/<%= citizen.CITIZEN_ID %>" class="btn btn-danger">Delete citizen</a>
+				<a href="/list/delete/<%= citizen.CITIZEN_ID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete <%= citizen.CITIZEN_NAME %>?')">Delete citizen</a>
 			</form>
 		</div>
 </body>
