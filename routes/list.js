@@ -56,7 +56,7 @@ router.post('/add', auth, function (req, res, next) {
 
 			var sql = "INSERT INTO citizen(CITIZEN_NAME, STR, DEX, INTL, CON, CHR) VALUES(?,?,?,?,?,?);" +
 				"SET @last_id := LAST_INSERT_ID();" +
-				"INSERT INTO donacija (VNESEL_USER, DATUM_VNOSA, KOLICINA, RESURS, CITIZEN, TIP) VALUES (?, ?, '0', '7', @last_id, 'P');";
+				"INSERT INTO donacija (VNESEL_USER, DATUM_VNOSA, KOLICINA, RESURS, CITIZEN, TIP) VALUES (?, ?, '0', '256', @last_id, 'P');";
 
 			db.query(sql, [name, str, dex, intl, con, char, req.session.user.id, new Date()], function (err, rows) {
 				if (err) console.log("napaka pri vnosu citizena: ", err);
