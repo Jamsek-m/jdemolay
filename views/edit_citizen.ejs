@@ -32,23 +32,23 @@ $(document).ready(function(){
 				</div>
 				<div class="form-group">
 					<label for="Str">Strength:</label>
-					<input type="number" id="Str" name="Str" value="<%= citizen.STR %>" class="form-control" />
+					<input type="number" id="Str" name="Str" value="<%= citizen.STR %>" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<label for="Str">Dexterity:</label>
-					<input type="number" id="Dex" name="Dex" value="<%= citizen.DEX %>" class="form-control" />
+					<input type="number" id="Dex" name="Dex" value="<%= citizen.DEX %>" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<label for="Str">Constitution:</label>
-					<input type="number" id="Con" name="Con" value="<%= citizen.CON %>" class="form-control" />
+					<input type="number" id="Con" name="Con" value="<%= citizen.CON %>" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<label for="Str">Charisma:</label>
-					<input type="number" id="Char" name="Char" value="<%= citizen.CHR %>" class="form-control" />
+					<input type="number" id="Char" name="Char" value="<%= citizen.CHR %>" class="form-control" required/>
 				</div>
 				<div class="form-group">
 					<label for="Str">Intelligence:</label>
-					<input type="number" id="Intl" name="Intl" value="<%= citizen.INTL %>" class="form-control" />
+					<input type="number" id="Intl" name="Intl" value="<%= citizen.INTL %>" class="form-control" required/>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button> <button type="button" id="back_btn" class="btn btn-info">Cancel</button>
 				<a href="/list/delete/<%= citizen.CITIZEN_ID %>" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete <%= citizen.CITIZEN_NAME %>?')">Delete citizen</a>
